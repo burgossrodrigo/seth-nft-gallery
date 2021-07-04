@@ -1,0 +1,22 @@
+@media (max-width: 767px){
+
+	.container{
+		
+		position: relative;
+		background-color: gray;
+		display: flex;
+		flex-direction: column;
+	
+		}
+
+}
+
+@media (min-widht: 900px){
+	
+	.container{
+		
+		
+		
+		}
+	
+}

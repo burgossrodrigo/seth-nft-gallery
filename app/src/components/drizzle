@@ -1,0 +1,15 @@
+    <DrizzleContext.Provider drizzle={drizzle}>
+      <DrizzleContext.Consumer>
+        {drizzleContext => {
+          const { drizzle, drizzleState, initialized } = drizzleContext;
+
+          if (!initialized) {
+            return "Carregando Seth..."
+          }
+
+          return (
+            <MyComponent drizzle={drizzle} drizzleState={drizzleState} />
+          )
+        }}
+      </DrizzleContext.Consumer>
+    </DrizzleContext.Provider>

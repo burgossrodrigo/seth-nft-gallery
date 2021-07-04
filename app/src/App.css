@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  margin: 2rem;
+}
+
+.section {
+  text-align: left;
+  max-width: 720px;
+  margin: 4rem auto auto;
+}
+
+
+	
+body{
+
+  background-color: #303030;
+  color: lightgray;
+
+}
+	
+
