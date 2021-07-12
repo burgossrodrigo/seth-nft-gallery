@@ -1,26 +1,39 @@
-import { ethers, Contract } from 'ethers';
+import Web3 from "web3";
 import BALANCE from './contracts/BALANCE.json';
 
-const getBlockchain = () =>
+const getWeb3 = () =>
   new Promise((resolve, reject) => {
-    window.addEventListener('load', async () => {
-      if(window.ethereum) {
-        await window.ethereum.enable();
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
-        const balance = new Contract(
-          BALANCE.networks[window.ethereum.networkVersion].address,
-          BALANCE.abi,
-          signer
-        );
-	
-
-        resolve({balance});
+    // Wait for loading completion to avoid race conditions with web3 injection timing.
+    window.addEventListener("load", async () => {
+      // Modern dapp browsers...
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        try {
+          // Request account access if needed
+          await window.ethereum.enable();
+          // Accounts now exposed
+          resolve(web3);
+        } catch (error) {
+          reject(error);
+        }
       }
-      resolve({balance: undefined});
+      // Legacy dapp browsers...
+      else if (window.web3) {
+        // Use Mist/MetaMask's provider.
+        const web3 = window.web3;
+        console.log("Injected web3 detected.");
+        resolve(web3);
+      }
+      // Fallback to localhost; use dev console port by default...
+      else {
+        const provider = new Web3.providers.HttpProvider(
+          "wss://bsc-ws-node.nariox.org:443"
+        );
+        const web3 = new Web3(provider);
+        console.log("No web3 instance injected, using bsc private node.");
+        resolve(web3);
+      }
     });
   });
-  
 
-export default getBlockchain;
+export default getWeb3

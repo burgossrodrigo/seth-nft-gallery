@@ -1,10 +1,5 @@
 import './App.css'
-import { 	
-	Container,
-	Grid,
-	Box,
-	Typography
-} from '@material-ui/core';
+import { Container, Grid, Box, Typography } from '@material-ui/core';
 import Header from './components/Header';
 import FeaturedPost from './components/FeaturedPost';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -15,11 +10,12 @@ import drizzleOptions from "./drizzleOptions";
 import MyComponent from "./MyComponent";
 import React, { useState, useEffect } from 'react';
 import style from './style.module.css';
+import getWeb3 from './ethereum.js';
+
 const drizzle = new Drizzle(drizzleOptions);
 
 
-
-
+const getWeb3Object = getWeb3();
 
 function App() {
 	
@@ -29,15 +25,18 @@ function App() {
 		palette: {
 		  type: "dark",
 		},
-		spacing: 4,
+		spacing: 2,
 		});
 
   return (
+  
+  
+  
     <ThemeProvider theme={theme}>
 		<Container maxWidth='lg'>
 			
 			<Header />
-			<FeaturedPost />
+			<FeaturedPost {...getWeb3Object} />
 			<br />
 			<Box>
 			<DrizzleContext.Provider drizzle={drizzle}>

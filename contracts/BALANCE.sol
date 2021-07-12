@@ -2,6 +2,7 @@
 pragma solidity >=0.4.21 <0.9.0;
 
 import '@openzeppelin-contracts/contracts/token/ERC721/ERC721.sol';
+import '@openzeppelin-contracts/contracts/finance/PaymentSplitter.sol';
 
 contract BALANCE is ERC721 {
     event NftBought(address _seller, address _buyer, uint256 _price);
@@ -16,9 +17,10 @@ contract BALANCE is ERC721 {
 	
 	  function mint(address to) external {
     require(msg.sender == admin, 'only admin');
-    _safeMint(to, nextTokenId);
+    if(nextTokenId < 2){_safeMint(to, nextTokenId);
     nextTokenId++;
-  }
+	}
+  } 
 	
 			  function _baseURI() internal view override returns (string memory) {
     return 'https://seth-balance.herokuapp.com/';
