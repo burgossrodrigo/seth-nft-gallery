@@ -4,7 +4,7 @@ import Seth from "./contracts/Seth.json";
 const options = {
   web3: {
     block: false,
-    customProvider: new Web3("https://speedy-nodes-nyc.moralis.io/c26dd9e67932cbc6fdf23586/bsc/testnet"),
+    customProvider: new Web3("wss://modest-goodall:filter-whinny-frosty-curve-bogus-huddle@ws-nd-243-814-022.p2pify.com"),
   },
   contracts: [Seth],
   events: {

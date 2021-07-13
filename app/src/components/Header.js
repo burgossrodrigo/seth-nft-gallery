@@ -17,6 +17,7 @@ import AppBar from '@material-ui/core/AppBar';
 import withWidth from '@material-ui/core/withWidth';
 import PropTypes from 'prop-types';
 import Link from '@material-ui/core/Link';
+import Carousel from '../Carousel';
 
 const useStyle = makeStyles((theme) => ({
 
@@ -33,6 +34,7 @@ const useStyle = makeStyles((theme) => ({
 		textTransform: 'uppercase',
 		justifyContent: 'center',
 		fontFamily: 'Montserrat',
+		flexGrow: 1
 		},
 		
 	root: {
@@ -71,7 +73,40 @@ const useStyle = makeStyles((theme) => ({
 	  
 	  spacing: 8,
 	  
+  },
+  
+  toolBar:{
+	  
+	  		[theme.breakpoints.only('xs')]: {
+			
+  display: 'flex',
+
+			
+		},
+		[theme.breakpoints.between('sm', 'xl')]: {
+			
+		display: 'none',
+			
+		}
+	  
+  },
+  
+  breadCrumbs:{
+	  
+	  		[theme.breakpoints.only('xs')]: {
+			
+		display: 'none',
+			
+		},
+		[theme.breakpoints.between('sm', 'xl')]: {
+			
+			display: 'flex',
+			
+		}
+	  
   }
+  
+  
 	
 
 }));
@@ -94,9 +129,9 @@ const Header = (props) => {
 	return(
 	
 		<>  
-		{width ===  'sm'  ? 
+
 		
-		<Toolbar style={{color: 'secundary'}} >	
+		<Toolbar className={classes.breadCrumbs} style={{color: 'secundary'}} >	
 			<Typography variant='h4' className={classes.title}> Seth Gallery </Typography>
 		<Box mr={5}>		
 			<Breadcrumbs aria-label="breadcrumb">
@@ -131,30 +166,28 @@ const Header = (props) => {
 	
 		
 		
-		:
-				<Toolbar style={{color: 'secundary'}}>	
+
+				<Toolbar className={classes.toolBar} style={{color: 'secundary'}}>	
 					<Typography variant='h5' className={classes.title}> Seth Gallery </Typography>	
 					
 
 					<IconButton color='inherit'>
 						<Badge badgeContent={1} color='secundary'>
-							<AccountBalanceWalletIcon onClick={() => {setWallet(true);}} />
+							<AccountBalanceWalletIcon color="primary" onClick={() => {setWallet(true);}} />
 						</Badge>
 					</IconButton>
 					<SideDrawer>
-						<IconButton color="inherit">
-							<MenuIcon />
+						<IconButton>
+							<MenuIcon color="primary" />
 						</IconButton>
 					</SideDrawer>
 					
-		</Toolbar> }
+		</Toolbar> 
 				
 				
-			<Toolbar className={classes.tagLine}>
-				<Typography variant="h4">Binance Smart Chain <br /> NFT ecosystem</Typography>				
+			<Toolbar className={classes.title}>
+				<Typography variant="h2"><Carousel /></Typography>				
 			</Toolbar>
-			
-			<Divider />
 			
 
 		
