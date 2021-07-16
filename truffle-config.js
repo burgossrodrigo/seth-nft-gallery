@@ -21,7 +21,7 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
     testnet: {
-      provider: () => new HDWalletProvider(mnemonic, `wss://modest-goodall:filter-whinny-frosty-curve-bogus-huddle@ws-nd-243-814-022.p2pify.com`),
+      provider: () => new HDWalletProvider(mnemonic, `https://data-seed-prebsc-1-s1.binance.org:8545/`),
       network_id: 97,
       confirmations: 10,
 	production: true,
@@ -29,7 +29,7 @@ module.exports = {
       skipDryRun: true
     },
     bsc: {
-      provider: () => new HDWalletProvider(mnemonic, `wss://bsc-ws-node.nariox.org:443`),
+      provider: () => new HDWalletProvider(mnemonic, `https://agitated-leakey:sprung-film-balmy-expose-uneven-atop@nd-896-839-440.p2pify.com`),
       network_id: 56,
       confirmations: 10,
       timeoutBlocks: 200,

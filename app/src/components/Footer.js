@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 			
   display: 'flex',
   flexDirection: 'column',
-   alignItems: 'center',
    textAlign: 'left',
 			
 		},
@@ -73,23 +72,23 @@ const Footer = () => {
 		
 		>
 			<ListItem button>
-				<ListItemIcon>
-					<TelegramIcon classes={{root: classes.iconRoot}} />
+				<ListItemIcon onClick={() => {window.open('https://t.me/SethNFT');}} >
+					<TelegramIcon  classes={{root: classes.iconRoot}} />
 				</ListItemIcon>	
 				<ListItemText primary="Telegram" />
 			</ListItem>
 			
 			<ListItem button>
-				<ListItemIcon>
-					<RedditIcon classes={{root: classes.iconRoot}} />
+				<ListItemIcon onClick={() => {window.open('https://www.reddit.com/r/SethNFT');}} >
+					<RedditIcon  classes={{root: classes.iconRoot}} />
 				</ListItemIcon>	
 				<ListItemText primary="Reddit" />
 			</ListItem>
 			
 				
 			<ListItem button>
-				<ListItemIcon>
-					<TwitterIcon classes={{root: classes.iconRoot}} />
+				<ListItemIcon onClick={() => {window.open('https://twitter.com/SethNft');}} >
+					<TwitterIcon  classes={{root: classes.iconRoot}} />
 				</ListItemIcon>	
 				<ListItemText primary="Twitter" />
 			</ListItem>

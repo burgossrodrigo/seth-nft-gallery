@@ -11,16 +11,12 @@ const { AccountData, ContractData, ContractForm,  } = newContextComponents;
 	const useStyles = makeStyles((theme) => ({
 	  root: {
 		flexGrow: 0,
-	[theme.breakpoints.down('sm')]: {
-
+	[theme.breakpoints.only('xs')]: {
+		fontSize: '6rpx',
     },
-    [theme.breakpoints.up('md')]: {
-
-    },
-    [theme.breakpoints.up('lg')]: {
-
-
-    },
+    [theme.breakpoints.between('md', 'xl')]: {
+		fontSize: '20px'
+    }
   },
 	  
 	  div: {
@@ -48,7 +44,7 @@ export default ({ drizzle, drizzleState }) => {
 					<Grid item  xs={12} sm={6}>	
 						<Paper className={classes.div} elevation={3}>
 							<Typography>Total supply</Typography>
-							<Typography variant='h6'>
+							<Typography>
 							<ContractData
 								drizzle={drizzle}
 								drizzleState={drizzleState}
@@ -63,7 +59,7 @@ export default ({ drizzle, drizzleState }) => {
 					<Grid item  xs={12} sm={6}>	
 						<Paper className={classes.div} elevation={3}>
 							<Typography>Name</Typography>
-							<Typography variant='h6'>
+							<Typography>
 							<ContractData
 								drizzle={drizzle}
 								drizzleState={drizzleState}
@@ -77,7 +73,7 @@ export default ({ drizzle, drizzleState }) => {
 					<Grid item  xs={12} sm={6}>	
 						<Paper className={classes.div} elevation={3}>
 							<Typography>Symbol</Typography>
-							<Typography variant='h6'>
+							<Typography>
 							<ContractData
 								drizzle={drizzle}
 								drizzleState={drizzleState}
@@ -93,7 +89,7 @@ export default ({ drizzle, drizzleState }) => {
 					<Grid item className={classes.div} xs={12} sm={6}>	
 						<Paper className={classes.div} elevation={3}>
 							<Typography>Owner</Typography>
-							<Typography variant='h6'>
+							<Typography>
 							<ContractData
 								drizzle={drizzle}
 								drizzleState={drizzleState}

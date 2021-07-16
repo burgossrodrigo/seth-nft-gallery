@@ -4,7 +4,6 @@ import { Toolbar,
 		 Typography, 
 		 IconButton, 
 		 Badge, 
-		 Hidden, 
 		 Breadcrumbs,
 		 Button,
 		 Box,
@@ -18,6 +17,7 @@ import withWidth from '@material-ui/core/withWidth';
 import PropTypes from 'prop-types';
 import Link from '@material-ui/core/Link';
 import Carousel from '../Carousel';
+import Countdown from 'react-countdown';
 
 const useStyle = makeStyles((theme) => ({
 
@@ -50,7 +50,7 @@ const useStyle = makeStyles((theme) => ({
   link: {
 	  
 
-	  fontSize: 8,
+	  fontSize: 15,
 	  textTransform: 'uppercase',
 	  justifyContent: 'center',
 	  fontFamily: 'arial'
@@ -73,6 +73,44 @@ const useStyle = makeStyles((theme) => ({
 	  
 	  spacing: 8,
 	  
+  },
+
+  countdown: {
+
+	[theme.breakpoints.only('xs')]: {
+			
+		display: 'flex',
+		flexDirection: 'column',
+		padding: '10px',
+	  
+				  
+	  },
+	 [theme.breakpoints.between('sm', 'xl')]: {
+
+	   display: 'flex',
+	   flexDirection: 'column',
+	   padding: '20px'
+				  
+	}
+
+  },
+
+  countdownItens: {
+
+	[theme.breakpoints.only('xs')]: {
+			
+
+		padding: '10px',
+	  
+				  
+			  },
+			  [theme.breakpoints.between('sm', 'xl')]: {
+
+			  padding: '20px'
+				  
+			  }
+
+
   },
   
   toolBar:{
@@ -101,6 +139,7 @@ const useStyle = makeStyles((theme) => ({
 		[theme.breakpoints.between('sm', 'xl')]: {
 			
 			display: 'flex',
+			fontSize: '35px'
 			
 		}
 	  
@@ -116,10 +155,7 @@ const useStyle = makeStyles((theme) => ({
 const Header = (props) => {
 	
 	
-	function handleClick(event) {
-	  event.preventDefault();
-	  console.info('You clicked a breadcrumb.');
-	}
+
 	
 	const classes = useStyle();
 	const [wallet, setWallet] = useState(false);
@@ -134,20 +170,20 @@ const Header = (props) => {
 		<Toolbar className={classes.breadCrumbs} style={{color: 'secundary'}} >	
 			<Typography variant='h4' className={classes.title}> Seth Gallery </Typography>
 		<Box mr={5}>		
-			<Breadcrumbs aria-label="breadcrumb">
-			  <Link color="inherit" className={classes.link} variant='inherit' href="/" onClick={handleClick}>
+			<Breadcrumbs aria-label="breadcrumb" separator='|'>
+			  <Link color="inherit" href='https://t.me/SethNFT' className={classes.link} variant='inherit' >
 				Telegram
 			  </Link>
-			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" href="" onClick={handleClick}>
+			  <Link underline='hover' href='https://www.reddit.com/r/SethNFT/' className={classes.link} variant='inherit' color="inherit" >
 				Reddit
 			  </Link>
-			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" href="" onClick={handleClick}>
+			  <Link underline='hover' href='https://twitter.com/SethNft' className={classes.link} variant='inherit' color="inherit" >
 				Twitter
 			  </Link>
-			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" href="" onClick={handleClick}>
+			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" >
 				BSC Scan
 			  </Link>
-			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" href="" onClick={handleClick}>
+			  <Link underline='hover' className={classes.link} variant='inherit' color="inherit" >
 				Chart
 			  </Link>
 			</Breadcrumbs>
@@ -184,10 +220,20 @@ const Header = (props) => {
 					
 		</Toolbar> 
 				
-				
 			<Toolbar className={classes.title}>
 				<Typography variant="h2"><Carousel /></Typography>				
 			</Toolbar>
+
+			<Toolbar className={classes.countdown}>
+				<Typography>
+					<Typography variant='h3'>Countdown</Typography>
+				</Typography>
+				<Typography variant='h2'>
+					<Countdown date={Date.parse('2021-07-17T21:00:00Z')} />
+				</Typography>
+			</Toolbar>
+
+			<Divider /> 	
 			
 
 		

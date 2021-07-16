@@ -1,5 +1,4 @@
 import Web3 from "web3";
-import BALANCE from './contracts/BALANCE.json';
 
 const getWeb3 = () =>
   new Promise((resolve, reject) => {
@@ -27,13 +26,13 @@ const getWeb3 = () =>
       // Fallback to localhost; use dev console port by default...
       else {
         const provider = new Web3.providers.WebsocketProvider(
-          "wss://modest-goodall:filter-whinny-frosty-curve-bogus-huddle@ws-nd-243-814-022.p2pify.com"
+          "wss://agitated-leakey:sprung-film-balmy-expose-uneven-atop@ws-nd-896-839-440.p2pify.com'"
         );
         const web3 = new Web3(provider);
-        console.log("No web3 instance injected, using bsc private node.");
+        console.log("No web3 instance injected, using Local web3.");
         resolve(web3);
       }
     });
   });
 
-export default getWeb3
+  export default getWeb3;

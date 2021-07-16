@@ -2,8 +2,8 @@
 
 pragma solidity >=0.4.21 <0.9.0;
 
-import "@pancake-swap-periphery-master/pancake-swap-periphery-master/contracts/interfaces/IPancakeRouter02.sol";
-import "@pancake-swap-periphery-master/pancake-swap-periphery-master/contracts/interfaces/IPancakeRouter01.sol";
+import "@theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol";
+import "@theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter01.sol";
 
 abstract contract Context {
     function _msgSender() internal view virtual returns (address payable) {

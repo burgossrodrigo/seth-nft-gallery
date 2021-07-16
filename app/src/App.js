@@ -1,5 +1,5 @@
 import './App.css';
-import { Container, Grid, Box, Typography } from '@material-ui/core';
+import { Container, Box, Divider } from '@material-ui/core';
 import Header from './components/Header';
 import FeaturedPost from './components/FeaturedPost';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -9,20 +9,14 @@ import { Drizzle } from "@drizzle/store";
 import drizzleOptions from "./drizzleOptions";
 import MyComponent from "./MyComponent";
 import React, { useState, useEffect } from 'react';
-import style from './style.module.css';
 import getWeb3 from './ethereum.js';
 import Footer from './components/Footer';
 import RoadMap from './components/Timeline';
 
 const drizzle = new Drizzle(drizzleOptions);
 
-
-const getWeb3Object = getWeb3();
-
 function App() {
-	
-
-	
+		
 		const theme = createMuiTheme({
 		palette: {
 		  type: "dark",
@@ -31,16 +25,20 @@ function App() {
 
 		});
 
+		getWeb3();
+
+		useEffect(() => {
+			document.title = `Seth NFT Gallery`;
+		  });
+
   return (
-  
-  
-  
+    
     <ThemeProvider theme={theme}>
 		<Container maxWidth='lg'>
 			
 			<Header />
 			<RoadMap />
-			<FeaturedPost {...getWeb3Object} />
+			<FeaturedPost />
 			<br />
 
 			<Box>
@@ -60,6 +58,7 @@ function App() {
 				  </DrizzleContext.Consumer>
 			</DrizzleContext.Provider>
 			</Box>
+			<Divider /> 	
 			<Footer />	
 		</Container>
 	</ThemeProvider>

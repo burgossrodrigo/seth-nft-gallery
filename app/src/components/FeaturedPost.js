@@ -3,24 +3,17 @@ import { CardContent,
 		 Card, 
 		 Typography, 
 		 Box, 
-		 Paper, 
-		 Grid, 
 		 Divider } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import Web3 from 'web3';
-import { getWeb3, web3 } from '../ethereum.js';
-import BALANCE from '../contracts/BALANCE.json'
 import CardMedia from '@material-ui/core/CardMedia';
 import withWidth from '@material-ui/core/withWidth';
 import PropTypes from 'prop-types';
-import { positions } from '@material-ui/system';
 import ShareTwoToneIcon from '@material-ui/icons/ShareTwoTone';
 import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
 import CastForEducationTwoToneIcon from '@material-ui/icons/CastForEducationTwoTone';
-import { flexbox, spacing } from '@material-ui/system';
-
+import BALANCE from '../contracts/BALANCE.json';
+import Web3 from 'web3';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	  align: 'center',
 	  width: '50px'
 	  
-  },
+  }, 
   
   infoWrapper: {
 	  
@@ -142,86 +135,42 @@ const useStyles = makeStyles((theme) => ({
   
 })); 
 
-const FeaturedPost = ({web3}, props, BALANCE) => {
+const FeaturedPost = (props, {blockchain, drizzle, drizzleState, contracts}) => {
 	
 	
 	const [balanceName, setBalanceName] = useState('');
 	const { width } = props;
 	const classes = useStyles();
-	console.log(width);	
-
-useEffect(() => {	
-	const init = async () => {
-		
-		const id = await web3.eth.net.getId();
-		const deployedNetwork = BALANCE.networks[id];
-		const balance = new web3.eth.contract(BALANCE.abi, deployedNetwork.adress);
-		
-		
-	
 	
 
-	
-	init();
-	
-	async function returnName() {
-		const balanceDataName = await balance.name().call();
-		setBalanceName(balanceDataName);
-		returnName();
-		
+		// Declare this call to be cached and synchronized. We'll receive the store key for recall.
+		const buyNFT = async () => {
 
-		
-					}
-					
-							const buyNft = async () => {
-		
-		const accounts = await window.ethereum.enable();
-		const account = accounts[0];	
-		const gas = await balance.methods
-		.buy(1)
-		.estimateGas();
-		await balance.methods
-		.buy(1)
-		.send();
-	}
-	
-	}
-	
-			
-			
+			const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://agitated-leakey:sprung-film-balmy-expose-uneven-atop@ws-nd-896-839-440.p2pify.com'));			
+			const networkId = await web3.eth.net.getId();
+			const deployedNetwork = BALANCE.networks[networkId];
+			const balance = new web3.eth.Contract(
+			  BALANCE.abi,
+			  deployedNetwork && deployedNetwork.address,
+			);
+			const addresses = await web3.eth.getAccounts();
+			const gas = await 
+    		balance.methods.buy(0).estimateGas();
+			await balance.methods.buy(0).send({from: addresses[0], value: '5000000000000000000'});
+		};
 
 	
-});
-	
-
-	
-					
-		
+		// Use the dataKey to display data from the store.
 
 
-	
-							
-
-
-
-
-		
-
-	
-
-	
-
-
-
-	
-
+ 
     return(<>
 	
 		<Box className={classes.infoWrapper} mt={5}>
 	
 			<Box className={classes.info} flexDirection='column'>
 				<Box className={classes.infoIcon}>
-					<ShareTwoToneIcon  />
+					<ShareTwoToneIcon  fontSize="large" />
 				</Box>	
 					<Typography variant='caption'>
 						Seth Ecossystem will be an dAPP with NFT orientation, intially on BSC but soon crosschain. In an near future we will run anf NFT cardgame with SETH and NFT airdrop award and charity
@@ -234,7 +183,7 @@ useEffect(() => {
 	
 				<Box className={classes.info} flexDirection='column'>
 				<Box className={classes.infoIcon}>	
-					<AttachMoneyTwoToneIcon color='secundary' />
+					<AttachMoneyTwoToneIcon fontSize="large" color='secundary' />
 				</Box>	
 				<Typography variant='caption'>
 						In our ecosystem we will have NFT trading and auctions, profits will be share among SETH holders by adding 30% of the profit to the token liquidity. Holders of some unique
@@ -247,7 +196,7 @@ useEffect(() => {
 
 				<Box className={classes.info} flexDirection='column'>
 				<Box className={classes.infoIcon}>
-					<CastForEducationTwoToneIcon className={classes.infoIcon} color='error' />
+					<CastForEducationTwoToneIcon fontSize="large" className={classes.infoIcon} color='error' />
 				</Box>	
 					<Typography variant='caption'>
 						Our git repository is already avaiable for anyone to copy at will still. We will build an youtube channel
@@ -269,11 +218,11 @@ useEffect(() => {
 				  title="BALANCE"
 				/>
 				<CardContent>
-					<Typography variant='caption'>Name: {balanceName}</Typography><br />
+					<Typography variant='caption'>Name: {} </Typography><br />
 					<Typography variant='caption'>Author: {}</Typography><br />						
 				</CardContent>
 				<CardContent>
-				<Button variant="contained" color="primary" onClick={() => {buyNft();}}>BUY 5 BNB</Button>
+				<Button variant="contained" color="primary" onClick={() => {buyNFT();}}>BUY 5 BNB</Button>
 				</CardContent>
 			</Card>
 			</Box>

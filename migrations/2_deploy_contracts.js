@@ -3,5 +3,4 @@ const SETH = artifacts.require("SETH");
 
 module.exports = function(deployer) {
   deployer.deploy(BALANCE);
-  deployer.deploy(SETH);
 };
