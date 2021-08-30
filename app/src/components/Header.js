@@ -104,9 +104,9 @@ const useStyle = makeStyles((theme) => ({
 	  
 				  
 			  },
-			  [theme.breakpoints.between('sm', 'xl')]: {
+	[theme.breakpoints.between('sm', 'xl')]: {
 
-			  padding: '20px'
+		padding: '20px'
 				  
 			  }
 
@@ -115,7 +115,7 @@ const useStyle = makeStyles((theme) => ({
   
   toolBar:{
 	  
-	  		[theme.breakpoints.only('xs')]: {
+	  	[theme.breakpoints.only('xs')]: {
 			
   display: 'flex',
 
@@ -138,8 +138,8 @@ const useStyle = makeStyles((theme) => ({
 		},
 		[theme.breakpoints.between('sm', 'xl')]: {
 			
-			display: 'flex',
-			fontSize: '35px'
+		display: 'flex',
+		fontSize: '35px'
 			
 		}
 	  
